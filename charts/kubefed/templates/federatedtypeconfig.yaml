@@ -1,0 +1,530 @@
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: applications.app.k8s.io
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedApplication
+    pluralName: federatedapplications
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: app.k8s.io
+    kind: Application
+    pluralName: applications
+    scope: Namespaced
+    version: v1beta1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: clusterrolebindings.rbac.authorization.k8s.io
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedClusterRoleBinding
+    pluralName: federatedclusterrolebindings
+    scope: Cluster
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    pluralName: clusterrolebindings
+    scope: Cluster
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: clusterroles.rbac.authorization.k8s.io
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedClusterRole
+    pluralName: federatedclusterroles
+    scope: Cluster
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    pluralName: clusterroles
+    scope: Cluster
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: configmaps
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedConfigMap
+    pluralName: federatedconfigmaps
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    kind: ConfigMap
+    pluralName: configmaps
+    scope: Namespaced
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: configs.notification.kubesphere.io
+  namespace: kube-federation-system
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedNotificationConfig
+    pluralName: federatednotificationconfigs
+    scope: Cluster
+    version: v1beta2
+  propagation: Enabled
+  targetType:
+    group: notification.kubesphere.io
+    kind: Config
+    pluralName: configs
+    scope: Cluster
+    version: v2beta2
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: deployments.apps
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedDeployment
+    pluralName: federateddeployments
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: apps
+    kind: Deployment
+    pluralName: deployments
+    scope: Namespaced
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: globalrolebindings.iam.kubesphere.io
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedGlobalRoleBinding
+    pluralName: federatedglobalrolebindings
+    scope: Cluster
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: iam.kubesphere.io
+    kind: GlobalRoleBinding
+    pluralName: globalrolebindings
+    scope: Cluster
+    version: v1alpha2
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: globalroles.iam.kubesphere.io
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedGlobalRole
+    pluralName: federatedglobalroles
+    scope: Cluster
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: iam.kubesphere.io
+    kind: GlobalRole
+    pluralName: globalroles
+    scope: Cluster
+    version: v1alpha2
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: groupbindings.iam.kubesphere.io
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedGroupBinding
+    pluralName: federatedgroupbindings
+    scope: Cluster
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: iam.kubesphere.io
+    kind: GroupBinding
+    pluralName: groupbindings
+    scope: Cluster
+    version: v1alpha2
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: groups.iam.kubesphere.io
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedGroup
+    pluralName: federatedgroups
+    scope: Cluster
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: iam.kubesphere.io
+    kind: Group
+    pluralName: groups
+    scope: Cluster
+    version: v1alpha2
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: ingresses.networking.k8s.io
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedIngress
+    pluralName: federatedingresses
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: networking.k8s.io
+    kind: Ingress
+    pluralName: ingresses
+    scope: Namespaced
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: jobs.batch
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedJob
+    pluralName: federatedjobs
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: batch
+    kind: Job
+    pluralName: jobs
+    scope: Namespaced
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: limitranges
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedLimitRange
+    pluralName: federatedlimitranges
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    kind: LimitRange
+    pluralName: limitranges
+    scope: Namespaced
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: namespaces
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedNamespace
+    pluralName: federatednamespaces
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    kind: Namespace
+    pluralName: namespaces
+    scope: Cluster
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: notificationmanagers.notification.kubesphere.io
+  namespace: kube-federation-system
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedNotificationManager
+    pluralName: federatednotificationmanagers
+    scope: Cluster
+    version: v1beta2
+  propagation: Enabled
+  targetType:
+    group: notification.kubesphere.io
+    kind: NotificationManager
+    pluralName: notificationmanagers
+    scope: Cluster
+    version: v2beta2
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: persistentvolumeclaims
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedPersistentVolumeClaim
+    pluralName: federatedpersistentvolumeclaims
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    kind: PersistentVolumeClaim
+    pluralName: persistentvolumeclaims
+    scope: Namespaced
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: receivers.notification.kubesphere.io
+  namespace: kube-federation-system
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedNotificationReceiver
+    pluralName: federatednotificationreceivers
+    scope: Cluster
+    version: v1beta2
+  propagation: Enabled
+  targetType:
+    group: notification.kubesphere.io
+    kind: Receiver
+    pluralName: receivers
+    scope: Cluster
+    version: v2beta2
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: replicasets.apps
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedReplicaSet
+    pluralName: federatedreplicasets
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: apps
+    kind: ReplicaSet
+    pluralName: replicasets
+    scope: Namespaced
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: routers.notification.kubesphere.io
+  namespace: kube-federation-system
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedNotificationRouter
+    pluralName: federatednotificationrouters
+    scope: Cluster
+    version: v1beta2
+  propagation: Enabled
+  targetType:
+    group: notification.kubesphere.io
+    kind: Router
+    pluralName: routers
+    scope: Cluster
+    version: v2beta2
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: secrets
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedSecret
+    pluralName: federatedsecrets
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    kind: Secret
+    pluralName: secrets
+    scope: Namespaced
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: serviceaccounts
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedServiceAccount
+    pluralName: federatedserviceaccounts
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    kind: ServiceAccount
+    pluralName: serviceaccounts
+    scope: Namespaced
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: services
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedService
+    pluralName: federatedservices
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    kind: Service
+    pluralName: services
+    scope: Namespaced
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: silences.notification.kubesphere.io
+  namespace: kube-federation-system
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedNotificationSilence
+    pluralName: federatednotificationsilences
+    scope: Cluster
+    version: v1beta2
+  propagation: Enabled
+  targetType:
+    group: notification.kubesphere.io
+    kind: Silence
+    pluralName: silences
+    scope: Cluster
+    version: v2beta2
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: statefulsets.apps
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedStatefulSet
+    pluralName: federatedstatefulsets
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: apps
+    kind: StatefulSet
+    pluralName: statefulsets
+    scope: Namespaced
+    version: v1
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: users.iam.kubesphere.io
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedUser
+    pluralName: federatedusers
+    scope: Cluster
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: iam.kubesphere.io
+    kind: User
+    pluralName: users
+    scope: Cluster
+    version: v1alpha2
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: workspacerolebindings.iam.kubesphere.io
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedWorkspaceRoleBinding
+    pluralName: federatedworkspacerolebindings
+    scope: Cluster
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: iam.kubesphere.io
+    kind: WorkspaceRoleBinding
+    pluralName: workspacerolebindings
+    scope: Cluster
+    version: v1alpha2
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: workspaceroles.iam.kubesphere.io
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedWorkspaceRole
+    pluralName: federatedworkspaceroles
+    scope: Cluster
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: iam.kubesphere.io
+    kind: WorkspaceRole
+    pluralName: workspaceroles
+    scope: Cluster
+    version: v1alpha2
+---
+apiVersion: core.kubefed.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: workspaces.tenant.kubesphere.io
+spec:
+  federatedType:
+    group: types.kubefed.io
+    kind: FederatedWorkspace
+    pluralName: federatedworkspaces
+    scope: Cluster
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    group: tenant.kubesphere.io
+    kind: Workspace
+    pluralName: workspaces
+    scope: Cluster
+    version: v1alpha1

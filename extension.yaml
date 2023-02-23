@@ -1,0 +1,25 @@
+apiVersion: v1
+name: kubefed
+version: 0.1.0
+displayName:
+  zh: KubeFed
+  en: KubeFed
+description:
+  zh: KubeFed 扩展插件
+  en: The KubeFed extension for KubeSphere
+keywords:
+  - multi-cluster
+  - federation
+home: https://kubesphere.io
+sources:
+  - https://github.com/kubesphere-extensions/kubefed
+kubeVersion: ">=1.19.0"
+ksVersion: ">=3.0.0"
+dependencies:
+  - name: kubefed
+    condition: kubefed.enabled
+  - name: frontend
+    condition: frontend.enabled
+  - name: backend
+    condition: backend.enabled
+icon: ./favicon.svg
