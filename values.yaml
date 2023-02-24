@@ -1,0 +1,27 @@
+kubefed:
+  enabled: true
+  controllermanager:
+    controller:
+      repository: kubesphere
+      image: kubefed
+      tag: v0.8.1
+    postInstallJob:
+      repository: kubesphere
+      image: kubectl
+      tag: v1.22.9
+    webhook:
+      repository: kubesphere
+      image: kubefed
+      tag: v0.8.1
+
+frontend:
+  enabled: true
+  image:
+    repository: kubespheredev/employee-frontend
+    tag: latest
+
+backend:
+  enabled: true
+  image:
+    repository: iawia002/kubefed
+    tag: latest
