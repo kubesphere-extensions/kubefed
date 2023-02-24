@@ -1,0 +1,29 @@
+name: ci
+on:
+  push:
+    branches:
+      - 'master'
+      - 'release-**'
+  pull_request:
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        go: ["1.19"]
+        os: [ubuntu-latest]
+    name: Go ${{ matrix.go }} in ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
+      - name: Environment
+        run: |
+          go version
+          go env
+      - name: Lint
+        run: make lint
+      - name: Test
+        run: make test
