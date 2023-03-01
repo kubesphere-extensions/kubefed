@@ -14,12 +14,6 @@ kubefed:
       image: kubefed
       tag: v0.8.1
 
-frontend:
-  enabled: true
-  image:
-    repository: kubespheredev/employee-frontend
-    tag: latest
-
 backend:
   enabled: true
   image:

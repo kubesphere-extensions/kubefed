@@ -18,8 +18,6 @@ ksVersion: ">=3.0.0"
 dependencies:
   - name: kubefed
     condition: kubefed.enabled
-  - name: frontend
-    condition: frontend.enabled
   - name: backend
     condition: backend.enabled
 icon: ./favicon.svg
