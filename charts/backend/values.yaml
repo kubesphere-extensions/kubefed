@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: iawia002/kubefed
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -29,7 +29,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8081
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
