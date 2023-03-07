@@ -65,6 +65,10 @@ func run(config *rest.Config) error {
 	if err = clusterReconciler.SetupWithManager(mgr); err != nil {
 		return err
 	}
+	// Register timed tasker
+	if err = mgr.Add(clusterReconciler); err != nil {
+		return err
+	}
 
 	return mgr.Start(signals.SetupSignalHandler())
 }

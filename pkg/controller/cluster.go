@@ -4,8 +4,11 @@ import (
 	"context"
 	"fmt"
 	"reflect"
+	"time"
 
 	apiextv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
+	"k8s.io/apimachinery/pkg/api/errors"
+	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/klog/v2"
@@ -16,6 +19,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/controller"
 	"sigs.k8s.io/controller-runtime/pkg/event"
 	"sigs.k8s.io/controller-runtime/pkg/predicate"
+	fedv1b1 "sigs.k8s.io/kubefed/pkg/apis/core/v1beta1"
 	"sigs.k8s.io/kubefed/pkg/kubefedctl"
 )
 
@@ -133,4 +137,50 @@ func (specChangedPredicate) Update(e event.UpdateEvent) bool {
 	oldObj := e.ObjectOld.(*clusterv1alpha1.Cluster)
 	newObj := e.ObjectNew.(*clusterv1alpha1.Cluster)
 	return !reflect.DeepEqual(oldObj.Spec, newObj.Spec)
+}
+
+func (r *ClusterReconciler) NeedLeaderElection() bool {
+	return true
+}
+
+func (r *ClusterReconciler) Start(ctx context.Context) error {
+	go wait.Until(func() {
+		if err := r.resyncKubeFedClusters(ctx); err != nil {
+			klog.Errorf("failed to reconcile clusters, err: %v", err)
+		}
+	}, time.Minute*3, ctx.Done())
+	return nil
+}
+
+func (r *ClusterReconciler) resyncKubeFedClusters(ctx context.Context) error {
+	kubeFedClusters := &fedv1b1.KubeFedClusterList{}
+	if err := r.List(ctx, kubeFedClusters); err != nil {
+		return err
+	}
+	for _, kubeFedCluster := range kubeFedClusters.Items {
+		cluster := &clusterv1alpha1.Cluster{}
+		err := r.Get(ctx, client.ObjectKey{Name: kubeFedCluster.Name}, cluster)
+		if err == nil {
+			continue
+		}
+		if !errors.IsNotFound(err) {
+			klog.Errorf("get cluster %s failed: %v", kubeFedCluster.Name, err)
+			continue
+		}
+		// The target cluster has been deleted and the corresponding KubeFedCluster needs to be cleaned up
+		klog.Infof("cluster %s has been deleted, deleting the corresponding KubeFedCluster", kubeFedCluster.Name)
+		if err = kubefedctl.UnjoinCluster(
+			r.hostConfig,
+			nil,
+			kubefedNamespace,
+			hostClusterName,
+			kubeFedCluster.Name,
+			kubeFedCluster.Name,
+			true,
+			false,
+		); err != nil {
+			klog.Errorf("UnjoinCluster cluster %s failed: %v", kubeFedCluster.Name, err)
+		}
+	}
+	return nil
 }
