@@ -9,6 +9,7 @@ rules:
       - 'serviceaccounts'
       - 'secrets'
       - 'services'
+      - 'configmaps'
   - verbs:
       - '*'
     apiGroups:
@@ -16,6 +17,12 @@ rules:
     resources:
       - 'deployments'
       - 'replicasets'
+  - verbs:
+      - '*'
+    apiGroups:
+      - 'batch'
+    resources:
+      - 'jobs'
   - verbs:
       - '*'
     apiGroups:
