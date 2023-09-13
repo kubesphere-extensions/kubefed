@@ -3,7 +3,7 @@ module github.com/kubesphere-extensions/kubefed
 go 1.19
 
 require (
-	github.com/iawia002/lia v0.1.0
+	github.com/iawia002/lia v0.1.2
 	github.com/urfave/cli/v2 v2.23.6
 	k8s.io/apiextensions-apiserver v0.25.3
 	k8s.io/apimachinery v0.26.2

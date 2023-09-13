@@ -101,12 +101,9 @@ func (r *ClusterReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 	return ctrl.Result{}, nil
 }
 
-func (r *ClusterReconciler) InjectClient(c client.Client) error {
-	r.Client = c
-	return nil
-}
-
 func (r *ClusterReconciler) SetupWithManager(mgr ctrl.Manager) error {
+	r.Client = mgr.GetClient()
+
 	return builder.
 		ControllerManagedBy(mgr).
 		For(
