@@ -19,3 +19,9 @@ backend:
   image:
     repository: iawia002/kubefed
     tag: latest
+
+frontend:
+  enabled: true
+  image:
+    repository: docker.io/donniean/federated-projects-frontend
+    tag: latest

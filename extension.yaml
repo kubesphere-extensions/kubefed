@@ -37,3 +37,5 @@ dependencies:
     condition: kubefed.enabled
   - name: backend
     condition: backend.enabled
+  - name: frontend
+    condition: frontend.enabled

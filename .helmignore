@@ -21,3 +21,8 @@
 .idea/
 *.tmproj
 .vscode/
+
+pkg/
+build/
+cmd/
+go.*

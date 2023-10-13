@@ -56,4 +56,4 @@ rules:
     apiGroups:
       - 'extensions.kubesphere.io'
     resources:
-      - 'apiservices'
+      - '*'
