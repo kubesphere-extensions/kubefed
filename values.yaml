@@ -17,5 +17,5 @@ kubefed:
 backend:
   enabled: true
   image:
-    repository: iawia002/kubefed
+    repository: iawia002/kubefed-extension
     tag: latest

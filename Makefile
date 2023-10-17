@@ -2,7 +2,7 @@ GOPATH ?= $(shell go env GOPATH)
 BIN_DIR := $(GOPATH)/bin
 GOLANGCI_LINT := $(BIN_DIR)/golangci-lint
 
-IMG ?= iawia002/kubefed:latest
+IMG ?= iawia002/kubefed-extension:latest
 
 .PHONY: lint test
 
