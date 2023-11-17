@@ -3,6 +3,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: applications.app.k8s.io
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -22,6 +23,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: clusterrolebindings.rbac.authorization.k8s.io
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -41,6 +43,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: clusterroles.rbac.authorization.k8s.io
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -60,6 +63,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: configmaps
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -77,27 +81,8 @@ spec:
 apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
-  name: configs.notification.kubesphere.io
-  namespace: kube-federation-system
-spec:
-  federatedType:
-    group: types.kubefed.io
-    kind: FederatedNotificationConfig
-    pluralName: federatednotificationconfigs
-    scope: Cluster
-    version: v1beta2
-  propagation: Enabled
-  targetType:
-    group: notification.kubesphere.io
-    kind: Config
-    pluralName: configs
-    scope: Cluster
-    version: v2beta2
----
-apiVersion: core.kubefed.io/v1beta1
-kind: FederatedTypeConfig
-metadata:
   name: deployments.apps
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -117,6 +102,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: globalrolebindings.iam.kubesphere.io
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -136,6 +122,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: globalroles.iam.kubesphere.io
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -155,6 +142,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: groupbindings.iam.kubesphere.io
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -174,6 +162,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: groups.iam.kubesphere.io
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -193,6 +182,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: ingresses.networking.k8s.io
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -212,6 +202,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: jobs.batch
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -231,6 +222,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: limitranges
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -249,6 +241,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: namespaces
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -266,27 +259,8 @@ spec:
 apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
-  name: notificationmanagers.notification.kubesphere.io
-  namespace: kube-federation-system
-spec:
-  federatedType:
-    group: types.kubefed.io
-    kind: FederatedNotificationManager
-    pluralName: federatednotificationmanagers
-    scope: Cluster
-    version: v1beta2
-  propagation: Enabled
-  targetType:
-    group: notification.kubesphere.io
-    kind: NotificationManager
-    pluralName: notificationmanagers
-    scope: Cluster
-    version: v2beta2
----
-apiVersion: core.kubefed.io/v1beta1
-kind: FederatedTypeConfig
-metadata:
   name: persistentvolumeclaims
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -304,27 +278,8 @@ spec:
 apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
-  name: receivers.notification.kubesphere.io
-  namespace: kube-federation-system
-spec:
-  federatedType:
-    group: types.kubefed.io
-    kind: FederatedNotificationReceiver
-    pluralName: federatednotificationreceivers
-    scope: Cluster
-    version: v1beta2
-  propagation: Enabled
-  targetType:
-    group: notification.kubesphere.io
-    kind: Receiver
-    pluralName: receivers
-    scope: Cluster
-    version: v2beta2
----
-apiVersion: core.kubefed.io/v1beta1
-kind: FederatedTypeConfig
-metadata:
   name: replicasets.apps
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -343,27 +298,8 @@ spec:
 apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
-  name: routers.notification.kubesphere.io
-  namespace: kube-federation-system
-spec:
-  federatedType:
-    group: types.kubefed.io
-    kind: FederatedNotificationRouter
-    pluralName: federatednotificationrouters
-    scope: Cluster
-    version: v1beta2
-  propagation: Enabled
-  targetType:
-    group: notification.kubesphere.io
-    kind: Router
-    pluralName: routers
-    scope: Cluster
-    version: v2beta2
----
-apiVersion: core.kubefed.io/v1beta1
-kind: FederatedTypeConfig
-metadata:
   name: secrets
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -382,6 +318,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: serviceaccounts
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -400,6 +337,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: services
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -417,27 +355,8 @@ spec:
 apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
-  name: silences.notification.kubesphere.io
-  namespace: kube-federation-system
-spec:
-  federatedType:
-    group: types.kubefed.io
-    kind: FederatedNotificationSilence
-    pluralName: federatednotificationsilences
-    scope: Cluster
-    version: v1beta2
-  propagation: Enabled
-  targetType:
-    group: notification.kubesphere.io
-    kind: Silence
-    pluralName: silences
-    scope: Cluster
-    version: v2beta2
----
-apiVersion: core.kubefed.io/v1beta1
-kind: FederatedTypeConfig
-metadata:
   name: statefulsets.apps
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -457,6 +376,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: users.iam.kubesphere.io
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -476,6 +396,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: workspacerolebindings.iam.kubesphere.io
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -495,6 +416,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: workspaceroles.iam.kubesphere.io
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
@@ -514,6 +436,7 @@ apiVersion: core.kubefed.io/v1beta1
 kind: FederatedTypeConfig
 metadata:
   name: workspaces.tenant.kubesphere.io
+  namespace: kube-federation-system
 spec:
   federatedType:
     group: types.kubefed.io
