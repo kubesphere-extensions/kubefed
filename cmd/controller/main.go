@@ -17,15 +17,12 @@ import (
 )
 
 func main() {
+	klog.InitFlags(nil)
+
 	app := &cli.App{
-		Name:  "controller",
-		Usage: "The controller-manager of kubefed extension",
-		Flags: []cli.Flag{
-			&cli.StringFlag{
-				Name:  "kubeconfig",
-				Usage: "kube config file path",
-			},
-		},
+		Name:          "controller",
+		Usage:         "The controller-manager of kubefed extension",
+		AllowExtFlags: true,
 		Action: func(c *cli.Context) error {
 			config, err := client.BuildConfigFromFlags("", c.String("kubeconfig"))
 			if err != nil {

@@ -48,13 +48,7 @@ func (r *ClusterReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 	}
 
 	klog.Infof("syncing cluster %s", cluster.Name)
-
-	// currently we didn't set cluster.Spec.Enable when creating cluster at client side, so only check
-	// if we enable cluster.Spec.JoinFederation now
-	if !cluster.Spec.JoinFederation {
-		klog.V(5).Infof("Skipping to join cluster %s cause it is not expected to join", cluster.Name)
-		return ctrl.Result{}, nil
-	}
+	defer klog.Infof("syncing cluster %s finished", cluster.Name)
 
 	if len(cluster.Spec.Connection.KubeConfig) == 0 {
 		klog.V(5).Infof("Skipping to join cluster %s cause the kubeconfig is empty", cluster.Name)
