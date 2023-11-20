@@ -3,6 +3,8 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   name: federatedworkspaces.types.kubefed.io
+  labels:
+    kubesphere.io/resource-served: "true"
 spec:
   group: types.kubefed.io
   names:
