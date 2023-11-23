@@ -58,6 +58,9 @@ func run(config *rest.Config) error {
 		return err
 	}
 
+	if err = (&controller.NamespaceReconciler{}).SetupWithManager(mgr); err != nil {
+		return err
+	}
 	clusterReconciler := controller.NewClusterReconciler(config)
 	if err = clusterReconciler.SetupWithManager(mgr); err != nil {
 		return err
