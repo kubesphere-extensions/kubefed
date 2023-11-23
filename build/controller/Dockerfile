@@ -1,5 +1,5 @@
 # Build the manager binary
-FROM golang:1.19 as builder
+FROM golang:1.21 as builder
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ COPY pkg/ pkg/
 
 RUN CGO_ENABLED=0 go build -a -o controller cmd/controller/main.go
 
-FROM alpine:3.17.2
+FROM alpine:3.18.4
 COPY --from=builder /app/controller /usr/local/bin/
 WORKDIR /
 CMD ["sh"]

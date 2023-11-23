@@ -1,10 +1,11 @@
 module github.com/kubesphere-extensions/kubefed
 
-go 1.19
+go 1.21
 
 require (
 	github.com/iawia002/lia v0.1.2
 	github.com/urfave/cli/v2 v2.23.6
+	k8s.io/api v0.26.2
 	k8s.io/apiextensions-apiserver v0.25.3
 	k8s.io/apimachinery v0.26.2
 	k8s.io/client-go v12.0.0+incompatible
@@ -71,7 +72,6 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/api v0.26.2 // indirect
 	k8s.io/component-base v0.26.2 // indirect
 	k8s.io/kube-openapi v0.0.0-20230224204730-66828de6f33b // indirect
 	k8s.io/kubectl v0.22.2 // indirect
