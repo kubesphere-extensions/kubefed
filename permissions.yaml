@@ -1,8 +1,6 @@
 kind: ClusterRole
 rules:
-  - verbs:
-      - '*'
-    apiGroups:
+  - apiGroups:
       - ''
     resources:
       - 'namespaces'
@@ -10,62 +8,70 @@ rules:
       - 'secrets'
       - 'services'
       - 'configmaps'
-  - verbs:
+    verbs:
       - '*'
-    apiGroups:
+  - apiGroups:
       - 'apps'
     resources:
       - 'deployments'
       - 'replicasets'
-  - verbs:
+    verbs:
       - '*'
-    apiGroups:
+  - apiGroups:
       - 'batch'
     resources:
       - 'jobs'
-  - verbs:
+    verbs:
       - '*'
-    apiGroups:
+  - apiGroups:
       - 'apiextensions.k8s.io'
     resources:
       - 'customresourcedefinitions'
-  - verbs:
+    verbs:
       - '*'
-    apiGroups:
+  - apiGroups:
       - 'rbac.authorization.k8s.io'
     resources:
       - 'roles'
       - 'clusterroles'
       - 'rolebindings'
       - 'clusterrolebindings'
-  - verbs:
+    verbs:
       - '*'
-    apiGroups:
+  - apiGroups:
       - 'admissionregistration.k8s.io'
     resources:
       - 'mutatingwebhookconfigurations'
       - 'validatingwebhookconfigurations'
-  - verbs:
+    verbs:
       - '*'
-    apiGroups:
+  - apiGroups:
       - 'core.kubefed.io'
     resources:
       - '*'
-  - verbs:
+    verbs:
       - '*'
-    apiGroups:
+  - apiGroups:
+      - 'types.kubefed.io'
+    resources:
+      - 'federatednamespaces'
+    verbs:
+      - '*'
+  - apiGroups:
       - 'extensions.kubesphere.io'
     resources:
-      - 'apiservices'
-  - verbs:
       - '*'
-    apiGroups:
+    verbs:
+      - '*'
+  - apiGroups:
       - 'coordination.k8s.io'
     resources:
       - '*'
-  - verbs:
+    verbs:
       - '*'
-    apiGroups:
+  - apiGroups:
       - 'cluster.kubesphere.io'
     resources:
+      - '*'
+    verbs:
       - '*'

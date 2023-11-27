@@ -1,13 +1,13 @@
 apiVersion: v1
 name: kubefed
-version: 0.1.0
+version: 1.0.0
 displayName:
   zh: KubeFed
   en: KubeFed
 description:
   zh: KubeFed 扩展插件
   en: The KubeFed extension for KubeSphere
-category: multi-cluster
+category: computing
 keywords:
   - multi-cluster
   - federation
@@ -15,20 +15,20 @@ home: https://kubesphere.io
 sources:
   - https://github.com/kubesphere-extensions/kubefed
 kubeVersion: ">=1.19.0"
-ksVersion: ">=3.0.0"
+ksVersion: ">=4.1.0"
 maintainers:
   - name: "Xinzhao Xu"
     email: "z2d@jifangcheng.com"
     url: "https://xinzhao.me"
 provider:
   zh:
-    name: "青云科技"
-    email: "contactus@yunify.com"
-    url: "https://www.qingcloud.com"
+    name: "北京青云科技股份有限公司"
+    email: "kubesphere@yunify.com"
+    url: "https://kubesphere.com.cn"
   en:
-    name: "QingCloud"
-    email: "contactus@yunify.com"
-    url: "https://www.qingcloud.com"
+    name: "QingCloud Technologies"
+    email: "kubesphere@yunify.com"
+    url: "https://kubesphere.io"
 staticFileDirectory: static
 icon: ./static/favicon.svg
 screenshots: []
