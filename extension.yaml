@@ -14,12 +14,11 @@ keywords:
 home: https://kubesphere.io
 sources:
   - https://github.com/kubesphere-extensions/kubefed
-kubeVersion: ">=1.19.0"
-ksVersion: ">=4.1.0"
+kubeVersion: ">=1.19.0-0"
+ksVersion: ">=4.1.0-0"
 maintainers:
   - name: "Xinzhao Xu"
-    email: "z2d@jifangcheng.com"
-    url: "https://xinzhao.me"
+    email: "kubesphere@yunify.com"
 provider:
   zh:
     name: "北京青云科技股份有限公司"
