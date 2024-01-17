@@ -16,6 +16,7 @@ sources:
   - https://github.com/kubesphere-extensions/kubefed
 kubeVersion: ">=1.19.0-0"
 ksVersion: ">=4.1.0-0"
+namespace: kube-federation-system
 maintainers:
   - name: "Xinzhao Xu"
     email: "kubesphere@yunify.com"
