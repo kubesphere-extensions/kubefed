@@ -2,11 +2,11 @@ apiVersion: v1
 name: kubefed
 version: 1.0.0
 displayName:
-  zh: KubeFed
-  en: KubeFed
+  zh: KubeSphere 多集群项目
+  en: KubeSphere Multi-Cluster Projects
 description:
-  zh: KubeFed 扩展插件
-  en: The KubeFed extension for KubeSphere
+  zh: 多集群项目跨集群运行，能为用户提供高可用性，并在问题发生时将问题隔离在某个集群内，避免影响业务。
+  en: A multi-cluster project runs across clusters, empowering users to achieve high availability and isolate occurring issues to a certain cluster while not affecting your business.
 category: computing
 keywords:
   - multi-cluster
@@ -37,3 +37,7 @@ dependencies:
     condition: kubefed.enabled
   - name: backend
     condition: backend.enabled
+images:
+  - iawia002/kubefed-extension:v1.0.0
+  - kubesphere/kubefed:v0.8.1
+  - kubesphere/kubectl:v1.22.9

@@ -24,10 +24,7 @@ spec:
         rollme: {{ randAlphaNum 5 | quote }}
       {{- end }}
     spec:
-      {{- if .Values.imagePullSecrets }}
-      imagePullSecrets:
-{{ toYaml .Values.imagePullSecrets | indent 8 }}
-      {{- end }}
+      {{- include "controller.imagePullSecrets" . | nindent 6 }}
       nodeSelector:
         {{- toYaml .Values.commonNodeSelector | nindent 8 }}
       tolerations:
@@ -43,8 +40,8 @@ spec:
         - "--v={{ .Values.controller.logLevel }}"
         - "--rest-config-qps={{ .Values.controller.restConfigQPS }}"
         - "--rest-config-burst={{ .Values.controller.restConfigBurst }}"
-        image: "{{ .Values.controller.repository }}/{{ .Values.controller.image }}:{{ .Values.controller.tag }}"
-        imagePullPolicy: "{{ .Values.controller.imagePullPolicy }}"
+        image: {{ template "controller.image" . }}
+        imagePullPolicy: "{{ .Values.controller.image.pullPolicy }}"
         name: controller-manager
 {{- if .Values.controller.env }}
         env:
@@ -94,10 +91,7 @@ spec:
         rollme: {{ randAlphaNum 5 | quote }}
       {{- end }}
     spec:
-      {{- if .Values.imagePullSecrets }}
-      imagePullSecrets:
-{{ toYaml .Values.imagePullSecrets | indent 8 }}
-      {{- end }}
+      {{- include "webhook.imagePullSecrets" . | nindent 6 }}
       nodeSelector:
         {{- toYaml .Values.commonNodeSelector | nindent 8 }}
       tolerations:
@@ -109,8 +103,8 @@ spec:
       serviceAccountName: kubefed-admission-webhook
       containers:
       - name: admission-webhook
-        image: "{{ .Values.webhook.repository }}/{{ .Values.webhook.image }}:{{ .Values.webhook.tag }}"
-        imagePullPolicy: "{{ .Values.webhook.imagePullPolicy }}"
+        image: {{ template "webhook.image" . }}
+        imagePullPolicy: "{{ .Values.webhook.image.pullPolicy }}"
 {{- if .Values.webhook.env }}
         env:
 {{- range $key, $value := .Values.webhook.env }}
