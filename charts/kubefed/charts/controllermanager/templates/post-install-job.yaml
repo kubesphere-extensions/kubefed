@@ -42,10 +42,7 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name | quote }}
         helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     spec:
-      {{- if .Values.imagePullSecrets }}
-      imagePullSecrets:
-{{ toYaml .Values.imagePullSecrets | indent 8 }}
-      {{- end }}
+      {{- include "postInstallJob.imagePullSecrets" . | nindent 6 }}
       nodeSelector:
         {{- toYaml .Values.commonNodeSelector | nindent 8 }}
       tolerations:
@@ -55,8 +52,8 @@ spec:
       automountServiceAccountToken: true
       containers:
       - name: post-install-job
-        image: "{{ .Values.postInstallJob.repository }}/{{ .Values.postInstallJob.image }}:{{ .Values.postInstallJob.tag }}"
-        imagePullPolicy: "{{ .Values.postInstallJob.imagePullPolicy }}"
+        image: {{ template "postInstallJob.image" . }}
+        imagePullPolicy: "{{ .Values.postInstallJob.image.pullPolicy }}"
         command: ["/bin/bash"]
         args: ["/opt/scripts/setup.sh"]
         volumeMounts:

@@ -41,17 +41,14 @@ controllermanager:
   #   value: "value"
   #   effect: "NoSchedule"
 
-  ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-  imagePullSecrets: []
-  # - name: secretName
-
   controller:
     annotations: {}
     replicaCount: 2
-    repository: kubesphere
-    image: kubefed
-    tag: v0.8.1
-    imagePullPolicy: IfNotPresent
+    image:
+      repository: kubesphere/kubefed
+      pullPolicy: IfNotPresent
+      pullSecrets: []
+      tag: v0.8.1
     logLevel: 2
     forceRedeployment: false
     env: {}
@@ -66,10 +63,11 @@ controllermanager:
     restConfigBurst: 100
   webhook:
     annotations: {}
-    repository: kubesphere
-    image: kubefed
-    tag: v0.8.1
-    imagePullPolicy: IfNotPresent
+    image:
+      repository: kubesphere/kubefed
+      pullPolicy: IfNotPresent
+      pullSecrets: []
+      tag: v0.8.1
     logLevel: 8
     forceRedeployment: false
     env: {}
@@ -90,10 +88,11 @@ controllermanager:
       commonName: ca.webhook.kubefed
 
   postInstallJob:
-    repository: kubesphere
-    image: kubectl
-    tag: v1.22.9
-    imagePullPolicy: IfNotPresent
+    image:
+      repository: kubesphere/kubectl
+      pullPolicy: IfNotPresent
+      pullSecrets: []
+      tag: v1.22.9
 
   service:
     labels: {}
