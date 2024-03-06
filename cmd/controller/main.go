@@ -5,12 +5,12 @@ import (
 
 	"github.com/iawia002/lia/kubernetes/client"
 	"github.com/urfave/cli/v2"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/rest"
 	"k8s.io/klog/v2"
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
 	"sigs.k8s.io/controller-runtime/pkg/manager/signals"
+	"sigs.k8s.io/kubefed/pkg/controller/util"
 
 	"github.com/kubesphere-extensions/kubefed/pkg/controller"
 	"github.com/kubesphere-extensions/kubefed/pkg/scheme"
@@ -41,7 +41,7 @@ func main() {
 func run(config *rest.Config) error {
 	mgr, err := manager.New(config, manager.Options{
 		LeaderElection:          true,
-		LeaderElectionNamespace: metav1.NamespaceSystem,
+		LeaderElectionNamespace: util.DefaultKubeFedSystemNamespace,
 		LeaderElectionID:        "kubesphere-kubefed-controller-manager-leader-election",
 		Scheme:                  scheme.Scheme,
 		Logger:                  klog.NewKlogr(),
